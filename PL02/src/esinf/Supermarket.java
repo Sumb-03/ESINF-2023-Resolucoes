@@ -72,7 +72,7 @@ public class Supermarket {
         for (Invoice invoice: sup.keySet()) {
             for (Product product: sup.get(invoice)) {
                 if (product.getIdentification().equals(productId))
-                    sumPrice += product.getPrice() * product.getQuantity();
+                    sumPrice += (int) (product.getPrice() * product.getQuantity());
             }
         }
 
