@@ -33,22 +33,29 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
     }
 
     private Node<E> twoRotations(Node<E> node) {
-        if (balanceFactor(node) < 0)
+        if (balanceFactor(node) < 0) {
+            node.setLeft(leftRotation(node.getLeft()));
+            node = rightRotation(node);
+        } else {
             node.setRight(rightRotation(node.getRight()));
-        return leftRotation(node);
+            node = leftRotation(node);
+        }
+        return node;
     }
 
     private Node<E> balanceNode(Node<E> node) {
         if (balanceFactor(node) > 1) {
-            if (balanceFactor(node.getRight()) < 0)
-                node.setRight(rightRotation(node.getRight()));
-
-            node = leftRotation(node);
+            if (balanceFactor(node.getRight()) > 0){
+                node = leftRotation(node);
+            } else{
+                node = twoRotations(node);
+            }
         } else if (balanceFactor(node) < -1) {
-            if (balanceFactor(node.getLeft()) > 0)
-                node.setLeft(leftRotation(node.getLeft()));
-
-            node = rightRotation(node);
+            if (balanceFactor(node.getLeft()) < 0){
+                node = rightRotation(node);
+            } else {
+                node = twoRotations(node);
+            }
         }
         return node;
     }
