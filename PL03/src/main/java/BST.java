@@ -142,17 +142,17 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
     private Node<E> remove(E element, Node<E> node) {
 
         if (node == null) {
-            return null;    //throw new IllegalArgumentException("Element does not exist");
+            return null;
         }
         if (element.compareTo(node.getElement()) == 0) {
             // node is the Node to be removed
-            if (node.getLeft() == null && node.getRight() == null) { //node is a leaf (has no childs)
+            if (node.getLeft() == null && node.getRight() == null) {
                 return null;
             }
-            if (node.getLeft() == null) {   //has only right child
+            if (node.getLeft() == null) {
                 return node.getRight();
             }
-            if (node.getRight() == null) {  //has only left child
+            if (node.getRight() == null) {
                 return node.getLeft();
             }
             E min = smallestElement(node.getRight());

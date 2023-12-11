@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="PL01" />
         <module name="PL03" />
+        <module name="PL05" />
+        <module name="PL04" />
       </profile>
     </annotationProcessing>
   </component>
